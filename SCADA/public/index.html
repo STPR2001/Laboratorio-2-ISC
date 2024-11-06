@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Laboratorio 2 - ISC</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Interfaz de control</h1>
+
+      <div class="motor-section">
+        <h2>Motor DC</h2>
+        <div class="control-group">
+          <button class="btn" onclick="sendCommand('DC', { action: 'toggle' })">
+            Encender/Apagar
+          </button>
+          <button
+            class="btn"
+            onclick="sendCommand('DC', { action: 'reverse' })"
+          >
+            Cambiar sentido
+          </button>
+        </div>
+        <div class="control-group">
+          <label>Velocidad:</label>
+          <input
+            type="range"
+            class="slider"
+            min="0"
+            max="100"
+            oninput="sendCommand('DC', { action: 'setSpeed', speed: this.value })"
+          />
+        </div>
+        <p class="status" id="dcStatus">Estado: -</p>
+      </div>
+
+      <div class="motor-section">
+        <h2>Motor PaP</h2>
+        <div class="control-group">
+          <label>Paso:</label>
+          <input
+            type="number"
+            min="1"
+            id="stepsInput"
+            placeholder="Cantidad de pasos"
+          />
+        </div>
+        <div class="control-group">
+          <button
+            class="btn"
+            onclick="sendCommand('PaP', { action: 'move', steps: getSteps(), direction: 'clockwise' })"
+          >
+            Sentido horario
+          </button>
+          <button
+            class="btn"
+            onclick="sendCommand('PaP', { action: 'move', steps: getSteps(), direction: 'counterclockwise' })"
+          >
+            Sentido antihorario
+          </button>
+        </div>
+        <p class="status" id="papStatus">Estado: -</p>
+      </div>
+
+      <div class="motor-section">
+        <h2>Servo</h2>
+        <div class="control-group">
+          <label>Ángulo:</label>
+          <input
+            type="range"
+            class="slider"
+            min="0"
+            max="180"
+            oninput="sendCommand('Servo', { action: 'setAngle', angle: this.value })"
+          />
+        </div>
+        <p class="status" id="servoStatus">Estado: -</p>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
