@@ -8,8 +8,8 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const arduinoPort = new SerialPort({
-  path: "/home/lucas/Escritorio/isc/virtual1",
-  baudRate: 9600,
+  path: process.env.SERIAL_PORT,
+  baudRate: parseInt(process.env.SERIAL_BAUD_RATE),
 });
 
 const parser = arduinoPort.pipe(new ReadlineParser({ delimiter: "\r\n" }));
