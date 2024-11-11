@@ -1,0 +1,63 @@
+<circuit version="1.1.0-SR0" rev="1917" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Subcircuit" CircId="Uno-4" mainComp="false" Show_id="true" Show_Val="false" Pos="-104,-252" rotation="0" hflip="1" vflip="1" label="Uno-4" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="../../../../../../tmp/arduino/sketches/36972B7E3CBAE357089D57F435609DC4/led-rojo.ino.with_bootloader.hex" Auto_Load="false" saveEepr="true" SerialMon="-1" />
+</item>
+
+<item itemtype="BJT" CircId="BJT-40" mainComp="false" Show_id="false" Show_Val="false" Pos="184,-212" rotation="0" hflip="1" vflip="1" label="BJT-40" idLabPos="18,0" labelrot="0" valLabPos="-16,20" valLabRot="0" PNP="false" Gain="100" Vcrit="0.670736 V" />
+
+<item itemtype="BJT" CircId="BJT-41" mainComp="false" Show_id="false" Show_Val="false" Pos="196,-116" rotation="0" hflip="1" vflip="1" label="BJT-41" idLabPos="18,0" labelrot="0" valLabPos="-16,20" valLabRot="0" PNP="false" Gain="100" Vcrit="0.670736 V" />
+
+<item itemtype="BJT" CircId="BJT-42" mainComp="false" Show_id="false" Show_Val="false" Pos="280,-208" rotation="0" hflip="-1" vflip="1" label="BJT-42" idLabPos="18,0" labelrot="0" valLabPos="-16,20" valLabRot="0" PNP="false" Gain="100" Vcrit="0.670736 V" />
+
+<item itemtype="BJT" CircId="BJT-43" mainComp="false" Show_id="false" Show_Val="false" Pos="272,-116" rotation="0" hflip="-1" vflip="1" label="BJT-43" idLabPos="18,0" labelrot="0" valLabPos="-16,20" valLabRot="0" PNP="false" Gain="100" Vcrit="0.670736 V" />
+
+<item itemtype="DcMotor" CircId="DcMotor-44" mainComp="false" Show_id="true" Show_Val="false" Pos="232,-164" rotation="0" hflip="1" vflip="1" label="DcMotor-44" idLabPos="-27.4501,-49.7082" labelrot="0" valLabPos="-14,36" valLabRot="0" RPM_Nominal="60 _RPM" Volt_Nominal="5 V" Resistance="100 Ω" />
+
+<item itemtype="SerialPort" CircId="SerialPort-52" mainComp="false" Show_id="false" Show_Val="false" Pos="-284,-148" rotation="0" hflip="1" vflip="1" label="SerialPort-52" idLabPos="-20,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" Auto="false" Port="/home/lucas/Escritorio/isc/virtual2" Baudrate="9600 _Bd" DataBits="8 _bits" StopBits="1 _bits" SerialMon="false" />
+
+<item itemtype="Node" CircId="Node-45" mainComp="false" Pos="164,-164" />
+
+<item itemtype="Node" CircId="Node-46" mainComp="false" Pos="304,-164" />
+
+<item itemtype="Node" CircId="Node-47" mainComp="false" Pos="184,-88" />
+
+<item itemtype="Node" CircId="Node-48" mainComp="false" Pos="180,-244" />
+
+<item itemtype="Connector" uid="Connector-73" startpinid="DcMotor-44-lPin" endpinid="Node-45-1" pointList="192,-164,164,-164" />
+
+<item itemtype="Connector" uid="Connector-74" startpinid="BJT-40-emiter" endpinid="Node-45-0" pointList="192,-196,192,-164,164,-164" />
+
+<item itemtype="Connector" uid="Connector-75" startpinid="Node-45-2" endpinid="BJT-41-collector" pointList="164,-164,164,-132,204,-132" />
+
+<item itemtype="Connector" uid="Connector-76" startpinid="DcMotor-44-rPin" endpinid="Node-46-1" pointList="272,-164,304,-164" />
+
+<item itemtype="Connector" uid="Connector-77" startpinid="BJT-42-emiter" endpinid="Node-46-0" pointList="272,-192,272,-164,304,-164" />
+
+<item itemtype="Connector" uid="Connector-78" startpinid="Node-46-2" endpinid="BJT-43-collector" pointList="304,-164,304,-132,264,-132" />
+
+<item itemtype="Connector" uid="Connector-79" startpinid="Node-47-1" endpinid="Uno-4-GND1" pointList="184,-88,184,-64,88,-64,88,-164,48,-164" />
+
+<item itemtype="Connector" uid="Connector-80" startpinid="BJT-43-emiter" endpinid="Node-47-0" pointList="264,-100,184,-100,184,-88" />
+
+<item itemtype="Connector" uid="Connector-81" startpinid="Node-47-2" endpinid="BJT-41-emiter" pointList="184,-88,184,-100,204,-100" />
+
+<item itemtype="Connector" uid="Connector-83" startpinid="BJT-40-collector" endpinid="Node-48-0" pointList="192,-228,192,-244,180,-244" />
+
+<item itemtype="Connector" uid="Connector-84" startpinid="Node-48-2" endpinid="BJT-42-collector" pointList="180,-244,272,-244,272,-224" />
+
+<item itemtype="Connector" uid="Connector-82" startpinid="Node-48-1" endpinid="Uno-4-5V0" pointList="180,-244,180,-252,64,-252,64,-156,48,-156" />
+
+<item itemtype="Connector" uid="Connector-91" startpinid="BJT-40-base" endpinid="Uno-4-4" pointList="168,-212,56,-212,56,-292,-128,-292,-128,-204,-96,-204" />
+
+<item itemtype="Connector" uid="Connector-92" startpinid="BJT-42-base" endpinid="Uno-4-3" pointList="296,-208,296,-284,-140,-284,-140,-212,-96,-212" />
+
+<item itemtype="Connector" uid="Connector-93" startpinid="BJT-41-base" endpinid="Uno-4-13" pointList="180,-116,180,0,-116,0,-116,-124,-96,-124" />
+
+<item itemtype="Connector" uid="Connector-94" startpinid="BJT-43-base" endpinid="Uno-4-12" pointList="288,-116,288,16,-124,16,-124,-132,-96,-132" />
+
+<item itemtype="Connector" uid="Connector-95" startpinid="SerialPort-52-pin0" endpinid="Uno-4-0" pointList="-324,-156,-324,-236,-96,-236" />
+
+<item itemtype="Connector" uid="Connector-96" startpinid="SerialPort-52-pin1" endpinid="Uno-4-1" pointList="-324,-140,-324,-228,-96,-228" />
+
+</circuit>

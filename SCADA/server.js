@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const arduinoPort = new SerialPort({
-  path: "COM1",
+  path: "/home/lucas/Escritorio/isc/virtual1",
   baudRate: 9600,
 });
 
