@@ -11,12 +11,12 @@ function getSteps() {
 socket.on("motor-status", (data) => {
   const { type, status } = JSON.parse(data);
   if (type === "DC") {
-    document.getElementById("dcStatus").innerText = `Estado: ${status}`;
+    let partes = status.split("|");
+    document.getElementById("dcSentido").innerText = `Sentido: ${partes[0]}`;
+    document.getElementById("dcStatus").innerText = `Estado: ${partes[1]}`;
   } else if (type === "PaP") {
     document.getElementById("papStatus").innerText = `Estado: ${status}`;
   } else if (type === "Servo") {
-    document.getElementById(
-      "servoStatus"
-    ).innerText = `Estado: Ángulo ${status}`;
+    document.getElementById("servoStatus").innerText = `Estado: Ángulo ${status}`;
   }
 });

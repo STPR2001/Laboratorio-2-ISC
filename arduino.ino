@@ -13,6 +13,8 @@ int transitorRightBottom = 12;
 Servo servomotor;
 int servoPin = 11;
 
+bool motorState = true; // Variable para controlar el estado del motor
+
 void setup() {
   Serial.begin(9600);
 
@@ -63,21 +65,38 @@ void loop() {
       }
     }
 
-    if (actionValue == "reverse") {
-      changeDCDirection();
+    if (typeValue == "DC") {
+      
+      if (actionValue == "reverse") {
+        changeDCDirection();
+      }
+      
+      if (actionValue == "toggle") {
+        if ( motorState ){
+          Serial.println("pasa por apagar");
+          turnOffMotor();
+        }else {
+          Serial.println("pasa por prender");
+          turnOnMotor();
+        }        
+      }
     }
-
     incomingData = "";
   }
 }
 
 void emitirDatos() {
   // DC
+  // Estado del motor
+  String motorStatus = motorState ? "encendido" : "apagado";
+
   String sentido = digitalRead(transitorLeftTop) ? "horario" : "antihorario";
-  Serial.println("{ \"type\": \"DC\", \"status\": \"sentido " + sentido + "\" }");
+  Serial.println("{ \"type\": \"DC\", \"status\": \"" + sentido + " | " + motorStatus + "\" }");
   // Servo
   Serial.println("{ \"type\": \"Servo\", \"status\": \"angle: " + String(servomotor.read()) + "\" }");
   // PaP
+  
+  //Serial.println("{ \"type\": \"DC\", \"motorStatus\": \"" + motorStatus + "\" }");
 }
 
 void changeDCDirection() {
@@ -92,6 +111,25 @@ void changeDCDirection() {
     digitalWrite(transitorRightTop, LOW);
     digitalWrite(transitorLeftBottom, LOW);
   }
+}
+
+void turnOnMotor() {
+  // Encender el motor
+  digitalWrite(transitorLeftTop, HIGH);
+  digitalWrite(transitorRightBottom, HIGH);
+  digitalWrite(transitorRightTop, LOW);
+  digitalWrite(transitorLeftBottom, LOW);
+  
+  motorState = true; // Actualizar estado del motor
+}
+
+void turnOffMotor() {
+  // Apagar el motor
+  digitalWrite(transitorLeftTop, LOW);
+  digitalWrite(transitorRightBottom, LOW);
+  
+  // Mantener la dirección anterior si es necesario
+  motorState = false; // Actualizar estado del motor
 }
 
 void changeServoAngle(String angle) {
