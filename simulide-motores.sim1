@@ -1,7 +1,7 @@
-<circuit version="1.1.0-SR0" rev="1917" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
 
 <item itemtype="Subcircuit" CircId="Uno-4" mainComp="false" Show_id="true" Show_Val="false" Pos="-104,-252" rotation="0" hflip="1" vflip="1" label="Uno-4" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="arduino/build/arduino.avr.uno/arduino.ino.with_bootloader.hex" Auto_Load="false" saveEepr="true" SerialMon="-1" />
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
 </item>
 
 <item itemtype="BJT" CircId="BJT-40" mainComp="false" Show_id="false" Show_Val="false" Pos="184,-212" rotation="0" hflip="1" vflip="1" label="BJT-40" idLabPos="18,0" labelrot="0" valLabPos="-16,20" valLabRot="0" PNP="false" Gain="100" Vcrit="0.670736 V" />
@@ -18,6 +18,10 @@
 
 <item itemtype="Servo" CircId="Servo-54" mainComp="false" Show_id="true" Show_Val="false" Pos="-76,56" rotation="0" hflip="1" vflip="1" label="Servo-54" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Speed="0.2 _s/60º" MinPulse="1000 _µs" MaxPulse="2000 _µs" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1000 MΩ" />
 
+<item itemtype="Stepper" CircId="Stepper-56" mainComp="false" Show_id="true" Show_Val="false" Pos="-236,-8" rotation="0" hflip="1" vflip="1" label="Stepper-56" idLabPos="-32,-63.7039" labelrot="0" valLabPos="-14,36" valLabRot="0" Bipolar="false" Steps="32" Resistance="100 Ω" />
+
+<item itemtype="Subcircuit" CircId="ULN2001-57" mainComp="false" Show_id="true" Show_Val="false" Pos="-380,-48" rotation="0" hflip="1" vflip="1" label="ULN2001-57" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+09 Ω" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" Tpd_ps="10 ns" Tr_ps="3 ns" Tf_ps="4 ns" Logic_Symbol="true" />
+
 <item itemtype="Node" CircId="Node-45" mainComp="false" Pos="164,-164" />
 
 <item itemtype="Node" CircId="Node-46" mainComp="false" Pos="304,-164" />
@@ -27,6 +31,12 @@
 <item itemtype="Node" CircId="Node-48" mainComp="false" Pos="180,-244" />
 
 <item itemtype="Node" CircId="Node-55" mainComp="false" Pos="64,-156" />
+
+<item itemtype="Node" CircId="Node-60" mainComp="false" Pos="56,-156" />
+
+<item itemtype="Node" CircId="Node-61" mainComp="false" Pos="-332,16" />
+
+<item itemtype="Node" CircId="Node-62" mainComp="false" Pos="-140,-40" />
 
 <item itemtype="Connector" uid="Connector-73" startpinid="DcMotor-44-lPin" endpinid="Node-45-1" pointList="192,-164,164,-164" />
 
@@ -62,14 +72,42 @@
 
 <item itemtype="Connector" uid="Connector-96" startpinid="SerialPort-52-pin1" endpinid="Uno-4-1" pointList="-312,-144,-312,-228,-96,-228" />
 
-<item itemtype="Connector" uid="Connector-97" startpinid="Uno-4-GND2" endpinid="Servo-54-in1" pointList="-96,-116,-140,-116,-140,56,-124,56" />
-
 <item itemtype="Connector" uid="Connector-98" startpinid="Node-55-1" endpinid="Servo-54-in0" pointList="64,-156,64,0,-156,0,-156,40,-124,40" />
 
 <item itemtype="Connector" uid="Connector-99" startpinid="Node-48-1" endpinid="Node-55-0" pointList="180,-244,180,-252,64,-252,64,-156" />
 
-<item itemtype="Connector" uid="Connector-100" startpinid="Node-55-2" endpinid="Uno-4-5V0" pointList="64,-156,48,-156" />
+<item itemtype="Connector" uid="Connector-101" startpinid="Uno-4-11" endpinid="Servo-54-in2" pointList="-96,-140,-164,-140,-164,72,-124,72" />
 
-<item itemtype="Connector" uid="Connector-101" startpinid="Uno-4-11" endpinid="Servo-54-in2" pointList="-96,-140,-168,-140,-168,72,-124,72" />
+<item itemtype="Connector" uid="Connector-103" startpinid="ULN2001-57-Out1" endpinid="Stepper-56-PinA1" pointList="-340,-40,-308,-40" />
+
+<item itemtype="Connector" uid="Connector-110" startpinid="ULN2001-57-Out2" endpinid="Stepper-56-PinB1" pointList="-340,-32,-312,-32,-312,-24,-308,-24" />
+
+<item itemtype="Connector" uid="Connector-111" startpinid="ULN2001-57-Out3" endpinid="Stepper-56-PinA2" pointList="-340,-24,-324,-24,-324,8,-308,8" />
+
+<item itemtype="Connector" uid="Connector-112" startpinid="ULN2001-57-Out4" endpinid="Stepper-56-PinB2" pointList="-340,-16,-328,-16,-328,24,-308,24" />
+
+<item itemtype="Connector" uid="Connector-114" startpinid="Node-60-1" endpinid="Node-61-1" pointList="56,-156,56,84,-332,84,-332,16" />
+
+<item itemtype="Connector" uid="Connector-115" startpinid="Node-55-2" endpinid="Node-60-0" pointList="64,-156,56,-156" />
+
+<item itemtype="Connector" uid="Connector-116" startpinid="Node-60-2" endpinid="Uno-4-5V0" pointList="56,-156,48,-156" />
+
+<item itemtype="Connector" uid="Connector-117" startpinid="Stepper-56-PinCo" endpinid="Node-61-0" pointList="-308,-8,-332,-8,-332,16" />
+
+<item itemtype="Connector" uid="Connector-118" startpinid="Node-61-2" endpinid="ULN2001-57-Com" pointList="-332,16,-340,16" />
+
+<item itemtype="Connector" uid="Connector-119" startpinid="Uno-4-5" endpinid="ULN2001-57-In1" pointList="-96,-196,-404,-196,-404,-40,-388,-40" />
+
+<item itemtype="Connector" uid="Connector-120" startpinid="Uno-4-6" endpinid="ULN2001-57-In2" pointList="-96,-188,-412,-188,-412,-32,-388,-32" />
+
+<item itemtype="Connector" uid="Connector-121" startpinid="Uno-4-7" endpinid="ULN2001-57-In3" pointList="-96,-180,-420,-180,-420,-24,-388,-24" />
+
+<item itemtype="Connector" uid="Connector-122" startpinid="Uno-4-8" endpinid="ULN2001-57-In4" pointList="-96,-164,-428,-164,-428,-16,-388,-16" />
+
+<item itemtype="Connector" uid="Connector-123" startpinid="Node-62-1" endpinid="ULN2001-57-Gnd" pointList="-140,-40,-180,-40,-180,48,-400,48,-400,16,-388,16" />
+
+<item itemtype="Connector" uid="Connector-124" startpinid="Uno-4-GND2" endpinid="Node-62-0" pointList="-96,-116,-140,-116,-140,-40" />
+
+<item itemtype="Connector" uid="Connector-125" startpinid="Node-62-2" endpinid="Servo-54-in1" pointList="-140,-40,-140,56,-124,56" />
 
 </circuit>

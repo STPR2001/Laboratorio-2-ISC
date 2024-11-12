@@ -1,4 +1,5 @@
 #include <Servo.h>
+#include <Stepper.h>
 
 unsigned long lastMillis = 0;
 unsigned long interval = 1000;
@@ -12,6 +13,9 @@ int transitorRightBottom = 12;
 
 Servo servomotor;
 int servoPin = 11;
+
+int pasosPorRevolucion = 2048;
+Stepper steppermotor(pasosPorRevolucion, 5,6,7,8);
 
 bool motorState = true; // Variable para controlar el estado del motor
 
@@ -30,10 +34,13 @@ void setup() {
   digitalWrite(transitorRightTop, HIGH);
   digitalWrite(transitorLeftBottom, HIGH);
 
-  servomotor.write(0);    
+  servomotor.write(0); 
+  steppermotor.setSpeed(notSpeed);   
 }
 
 void loop() {
+  steppermotor.setSpeed(pasosPorRevolucion);  
+
   unsigned long currentMillis = millis();
 
   // Los datos se envían a la scada cada 1 segundo
