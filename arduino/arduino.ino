@@ -18,7 +18,7 @@ Servo servomotor;
 int servoPin = 11;
 
 const int pasosPorRevolucion = 2048;
-Stepper steppermotor(pasosPorRevolucion, 5,6,7,8);
+Stepper steppermotor(pasosPorRevolucion, 8,6,7,9);
 
 bool motorState = true; // Variable para controlar el estado del motor
 
@@ -37,7 +37,7 @@ void setup() {
   digitalWrite(transitorRightTop, HIGH);
   digitalWrite(transitorLeftBottom, HIGH);
 
-  servomotor.write(0); 
+  servomotor.write(90); 
   steppermotor.setSpeed(15);   
 }
 
