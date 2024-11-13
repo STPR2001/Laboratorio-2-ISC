@@ -95,18 +95,27 @@ void loop() {
     }
 
     if (typeValue == "PaP"){
-      int actionStartIndex = incomingData.indexOf("\"steps\":\"") + 7;
-      int actionEndIndex = incomingData.indexOf("\"", actionStartIndex);
-      String pasosPorRevolucion = incomingData.substring(actionStartIndex, actionEndIndex);
-
-      int actionStartIndex = incomingData.indexOf("\"direction\":\"") + 12;
-      int actionEndIndex = incomingData.indexOf("\"", actionStartIndex);
-      String direccionValue = incomingData.substring(actionStartIndex, actionEndIndex);
+      int stepStartIndex = incomingData.indexOf("\"steps\":") + 8;
+      int stepEndIndex = incomingData.indexOf(",", stepStartIndex);
+      String pasosPorRevolucion = incomingData.substring(stepStartIndex, stepEndIndex);
+      const char* cpasosPorRevolucion = pasosPorRevolucion.c_str();
+      int pasosRevol = atoi(cpasosPorRevolucion);
       
+      int dirStartIndex = incomingData.indexOf("\"direction\":\"") + 13;
+      int dirEndIndex = incomingData.indexOf("\"", dirStartIndex);
+      String direccionValue = incomingData.substring(dirStartIndex, dirEndIndex);
+      Serial.println(incomingData);
+      Serial.println("step: "+ String(dirStartIndex));
+      Serial.println("step: "+ String(dirEndIndex));
+      Serial.println("pasos: "+ pasosPorRevolucion);
+      Serial.println("direccion: "+direccionValue);
+
       if ( direccionValue == "clockwise"){
-        steppermotor.setSpeed(pasosPorRevolucion);    // Establecer dirección
+        Serial.println("entra en horario");
+        steppermotor.step(pasosRevol);    // Establecer dirección
       }else{
-        steppermotor.setSpeed(-pasosPorRevolucion);     // Establecer dirección
+        Serial.println("entra en NO horario"+String(-pasosRevol));
+        steppermotor.step( pasosRevol * -1);     // Establecer dirección
       }
       // Control del motor paso a paso
       
